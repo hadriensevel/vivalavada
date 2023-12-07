@@ -1,6 +1,10 @@
 ---
+title: Viva La VADA
+description: >-
+    Bonjour
 ---
-# Home page
+
+# Welcome
 
 ## Title
 

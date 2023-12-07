@@ -2,3 +2,23 @@
 ---
 
 @import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap');
+
+.page-header {
+    height: 100vh;
+    height: 100dvh;
+
+    .header-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
