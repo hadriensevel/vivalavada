@@ -204,6 +204,7 @@
         text-align: center;
 
         & .glass {
+            max-width: 950px;
             padding: 20px 50px;
             background: rgba(255, 255, 255, 0.12);
             border-radius: 10px;
@@ -214,6 +215,7 @@
 
         & #discover-button {
             background-color: rgba(39, 161, 97, 0.9);
+            color: #fff;
 
             &:hover {
                 background-color: rgba(6, 147, 74, 0.4);
@@ -263,6 +265,7 @@ h1, h2, h3, h4 {
     padding: 40px 30px;
     color: #fff;
     background-color: rgba(39, 161, 97, 0.9);
+    text-align: center;
 
     & .team {
         display: flex;
@@ -271,6 +274,7 @@ h1, h2, h3, h4 {
         justify-content: center;
         align-items: center;
         margin-top: 20px;
+        max-width: 1200px;
     }
 
     & .team-member {
@@ -285,6 +289,7 @@ h1, h2, h3, h4 {
 
         & h3 {
             font-size: 1rem;
+            opacity: 0.7;
         }
 
         & p {
