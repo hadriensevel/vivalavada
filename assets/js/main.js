@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Bubbles
     document.querySelector('#discover-button').addEventListener('click', () => {
         const bubbleContainer = document.querySelector('.page-header');
-        const numberOfBubbles = 1000;
+        const numberOfBubbles = 500;
 
         // Make many bubbles
         for (let i = 0; i < numberOfBubbles; i++) {
