@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // The bubbles function
 function bubbles() {
     const bubbleContainer = document.querySelector('.page-header');
-    const numberOfBubbles = 500;
+    const numberOfBubbles = 250;
 
     // Make many bubbles
     for (let i = 0; i < numberOfBubbles; i++) {

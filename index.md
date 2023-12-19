@@ -11,3 +11,6 @@ button: Discover the data story 🍺
 ### Subtitle
 
 {% include_relative assets/plots/bar-chart-race-styles.html %}
+
+# Another plot
+{% include_relative assets/plots/highest-rated-breweries-graph.html %}
