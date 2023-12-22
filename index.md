@@ -50,6 +50,7 @@ In 2006, there existed only two preferred brewery locations in the world, namely
 #### Popularity of brewery locations:
 We begin in 2006 with most of the locations rating their local breweries the highest. However, it can be seen that some states of the U.S. and most of the countries of Europe prefer breweries from Central/Western Europe. As the years go by, we see that almost all locations become more and more “nationalist”, as almost every location rates their local breweries the highest. One interesting example of that are the European countries, mostly favoring breweries in Central/Western Europe in 2006, now rate breweries from their specific location in Europe the highest - East, North or South.
 
+# Bar chart races
 Okay cool, we can check out what kinds of beer different places like on the world map. But wouldn’t it also be interesting to see the “overall” opinion of the world and see how it changes over the years? However, we have to do this wisely. Simply looking at the total number of ratings and their distribution in that year would not represent the preference of the whole world since the locations with high populations heavily dominate the aggregated results.
 
 Instead, we came up with a much more thoughtful and interesting approach. If the Eurovision Song Contest can do it, so can we! In the Eurovision Song Contest, each country gives points to their top 10 favorite songs. The song that gets the highest number of total points is the winner of the year.
@@ -60,8 +61,7 @@ Below, you can see the global trends versus time in the form of bar chart races!
 
 
 
-# Bar chart races
-
+#### *Preferences Racing*
 {% include_relative assets/plots/bar-chart-race.html %}
 
 ### Brewing Bridges: Examining Beer Preferences Across Distances and Economies
