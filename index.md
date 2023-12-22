@@ -26,7 +26,7 @@ For each criterion (beer style or brewery location), we define the “preference
 Since both definitions of preference have two different categories, we end up with four different metrics of beer preference. But don’t worry! To not overwhelm you, we collect each of our findings in groups of four and you will be able to access them using a simple dropdown menu!
 
 
-##### *Beer Preferences versus Location and Time*
+### *Beer Preferences versus Location and Time*
 
 Now, let’s find out what the beer preferences of each location are and how they evolve over time. For this, we first group the beer styles and brewery locations under broader categories so that we can assign them to a meaningful set of colors. Then, we color each location on the world map based on its beer preference. You can use the dropdown menu to look at different metrics, the slider to navigate through the years, and hover your mouse over a location in the map to see its name!
 Let’s evaluate our results for each metric briefly:
@@ -64,7 +64,7 @@ Okay cool, we can check out what kinds of beer different places like on the worl
 
 {% include_relative assets/plots/bar-chart-race.html %}
 
-##### Brewing Bridges: Examining Beer Preferences Across Distances and Economies
+### Brewing Bridges: Examining Beer Preferences Across Distances and Economies
 Now that we have the beer preferences for each location and year, it is natural to be curious about how similar these preferences are, and how these similarities evolve over time. For this, we need to define a similarity metric. Remember that we have preferences in terms of beer styles and brewery locations and one metric for each of them is needed.
 
 For beer styles, we have the top 3 styles for each location so we can use the Jaccard similarity metric. The beer style preference similarity of the two locations is calculated between their corresponding beer style preference sets of size 3. For the brewery locations, we use the inverse of the geographical distance between the preferred brewery locations of the two locations to define how 'similar' their preferred brewery locations are.
@@ -103,7 +103,7 @@ To determine how wealth and location played a role in beer preferences, we compu
 Then, using the pairwise preference similarities we computed before, for each location, we find the mean pairwise preference similarity of it with the 15 most similar locations to it and the 15 most different locations to it. Then, we aggregate these two similarity values over locations for each year. We also use the global mean preference similarity plotted before. Plotting all three curves in a single graph, we can visualize how “similar” and “different” locations behave in terms of their beer preferences with respect to each other and to the global mean similarity. As usual, we have four different metrics for each type of similarity: geographic distance and GDP per capita. Therefore, we end up with 8 different graphs and each one can be selectable using the dropdown menus. 
 
 
-## The 4 graphs
+## The 15 Closest and Furthest Locations
 {% include_relative assets/plots/similarity-graphs.html %}
 
 
