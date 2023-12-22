@@ -17,7 +17,7 @@ button: Discover the data story 🍺
 {% include_relative assets/plots/trends-maps.html %}
 
 # Arrow plot (somewhere)
-{% include_relative assets/plots/highest-rated-breweries-graph.html %}
+{% include_relative assets/plots/arrow-graph.html %}
 
 # Simirality graphs
 ## Globals
