@@ -15,7 +15,7 @@ The data used for this study is collected from two different beer rating website
 * Location set: All states of the U.S. except for South Dakota (49 states), Iceland, Denmark, Canada, Norway, Sweden, Belgium, New Zealand, Ireland, Finland, Scotland, Australia, Netherlands, Luxembourg, England, Poland, Croatia, Northern Ireland, Spain, Italy, Germany, France and Brazil.
 
 
-#### So, what does a ‘beer preference’ even mean?
+### So, what does a ‘beer preference’ even mean?
 
 **Now the question arises: “What do we mean by a ‘beer preference’?”. We define the beer preference of a location based on two different criteria**:
 
@@ -127,7 +127,7 @@ Let us now look at the countries that would hate each other if they ever went to
 
 1. Germany and Iceland
 2. Austria and Iceland
-3. Denmark at Iceland
+3. Denmark and Iceland
 
 We see one common denominator! It looks like Iceland has a lot of enemies to watch out for! And unsurprisingly, these countries are not as connected in terms of similar cultures so it makes sense that their beer preferences are quite different. 
 
