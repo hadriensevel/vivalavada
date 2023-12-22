@@ -23,7 +23,7 @@ button: Discover the data story 🍺
 {% include_relative data/html_graphs/similarity_global.html %}
 
 ## The 4 graphs
-{% include_relative assets/plots/similarity-metrics-graphs.html %}
+{% include_relative assets/plots/similarity-graphs.html %}
 
 
 # Beer brotherhood
