@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Render the new chart
         animationStarted = false;
         isPaused = false;
+        document.getElementById('bar-race-pause-button').textContent = '⏸️ Pause the race';
         barChartsAnimation(metric).then(runAnimation => runHandler(runAnimation));
     });
 
@@ -346,7 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseButton.addEventListener('click', () => {
         isPaused = !isPaused;
         if (!isPaused) {
+            pauseButton.textContent = '⏸️ Pause the race';
             window.dispatchEvent(new Event('resume'));
+        } else {
+            pauseButton.textContent = '▶️ Play the race'
         }
     });
 });
