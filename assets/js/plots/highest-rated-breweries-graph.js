@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             data.forEach(row => {
                 transformedData[year].push({
                     source: row[year],
-                    target: row.location,
+                    target: row.location.replace('United States', 'USA'),
                     type: "most_rated"
                 });
             });
@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             .on("end", dragended);
     }
 
-    // Cell 1 translated into a function
     function createChart(year = 2006) {
         const data_year = data[year];
         const width = 928;
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         //const color = d3.scaleOrdinal(types, d3.schemePaired);
         const color = d3.scaleOrdinal(types, ['#1f78b4']);
-        console.log(d3.schemePaired);
 
         const simulation = d3.forceSimulation(nodes)
             .force("link", d3.forceLink(links).id(d => d.id))
@@ -82,7 +80,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("height", height)
             .attr("style", "max-width: 100%; height: auto; font: 12px sans-serif;");
 
-        // Per-type markers, as they don't inherit styles.
         svg.append("defs").selectAll("marker")
             .data(types)
             .join("marker")

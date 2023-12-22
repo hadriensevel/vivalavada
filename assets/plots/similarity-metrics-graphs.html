@@ -1,0 +1,47 @@
+<label for="metrics-select">Select a metric:</label>
+<select id="metrics-select">
+    <option value="ratings-style">Ratings of beer styles</option>
+    <option value="number-ratings-style">Popularity of beer styles</option>
+    <option value="ratings-brewery">Ratings of brewery locations</option>
+    <option value="number-ratings-brewery">Popularity of brewery locations</option>
+</select>
+
+<div id="style_similarity_ratings">
+    {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
+</div>
+<div id="style_similarity_popularity" class="hidden">
+    {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
+</div>
+<div id="brewery_similarity_ratings" class="hidden">
+    {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
+</div>
+<div id="brewery_similarity_popularity" class="hidden">
+    {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
+</div>
+<script>
+    // Change the graph when the user selects a different metric
+    document.getElementById("metrics-select").addEventListener("change", () => {
+        const metric = document.getElementById("metrics-select").value;
+        if (metric === "ratings-style") {
+            document.getElementById("style_similarity_ratings").classList.remove("hidden");
+            document.getElementById("style_similarity_popularity").classList.add("hidden");
+            document.getElementById("brewery_similarity_ratings").classList.add("hidden");
+            document.getElementById("brewery_similarity_popularity").classList.add("hidden");
+        } else if (metric === "number-ratings-style") {
+            document.getElementById("style_similarity_ratings").classList.add("hidden");
+            document.getElementById("style_similarity_popularity").classList.remove("hidden");
+            document.getElementById("brewery_similarity_ratings").classList.add("hidden");
+            document.getElementById("brewery_similarity_popularity").classList.add("hidden");
+        } else if (metric === "ratings-brewery") {
+            document.getElementById("style_similarity_ratings").classList.add("hidden");
+            document.getElementById("style_similarity_popularity").classList.add("hidden");
+            document.getElementById("brewery_similarity_ratings").classList.remove("hidden");
+            document.getElementById("brewery_similarity_popularity").classList.add("hidden");
+        } else if (metric === "number-ratings-brewery") {
+            document.getElementById("style_similarity_ratings").classList.add("hidden");
+            document.getElementById("style_similarity_popularity").classList.add("hidden");
+            document.getElementById("brewery_similarity_ratings").classList.add("hidden");
+            document.getElementById("brewery_similarity_popularity").classList.remove("hidden");
+        }
+    });
+</script>
