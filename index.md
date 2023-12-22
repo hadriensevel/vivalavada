@@ -1,6 +1,6 @@
 ---
 title: A journey through beer preferences
-description:Exploring Temporal and Spatial Dynamics in Beer Preferences
+description : Exploring Temporal and Spatial Dynamics in Beer Preferences
 button: Discover the data story 🍺
 ---
 
