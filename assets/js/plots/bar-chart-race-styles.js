@@ -304,6 +304,7 @@ barChartsAnimation().then(runAnimation => {
     const restartButton = document.getElementById('bar-race-restart-button');
     restartButton.addEventListener('click', () => {
         animationStarted = true; // Prevent the animation from restarting if it's already started
+        isPaused = false;
         runAnimation(); // Function to start the animation
     });
 
