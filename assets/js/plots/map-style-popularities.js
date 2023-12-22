@@ -100,6 +100,30 @@ async function createMap(year= 2006) {
         .attr("stroke", "white")
         .attr("d", path)
 
+    const legend = svg.append("g")
+        .attr("id", "legend")
+        .attr("transform", "translate(20,20)"); // Adjust this to position your legend
+
+    // Determine the height of each legend item
+    const legendItemHeight = 20;
+
+    // Create one legend item for each color in the color scale
+    colorScale.domain().forEach((style, idx) => {
+        const legendItem = legend.append("g")
+            .attr("transform", `translate(0, ${idx * legendItemHeight})`);
+
+        legendItem.append("rect")
+            .attr("width", 18)
+            .attr("height", 18)
+            .attr("fill", colorScale(style));
+
+        legendItem.append("text")
+            .attr("x", 24)
+            .attr("y", 9)
+            .attr("dy", "0.35em") // to vertically center text
+            .text(style); // Assuming 'style' is the label for the legend
+    });
+
     return svg.node();
 }
 
