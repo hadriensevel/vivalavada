@@ -1,6 +1,6 @@
 ---
-title: Cheers to Change!
-description : Exploring Temporal and Spatial Dynamics in Beer Preferences
+title: A journey through beer preferences
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
 button: Discover the data story 🍺
 ---
 
@@ -17,7 +17,7 @@ The data used for this study is collected from two different beer rating website
 
 ##### *So, what does a ‘beer preference’ even mean?*
 
-Now the question arises: “What do we mean by a ‘beer preference’?”. We define the beer preference of a location based on two different criteria:
+**Now the question arises: “What do we mean by a ‘beer preference’?”. We define the beer preference of a location based on two different criteria**:
 
 The first criterion is the preferred beer style and the second is the preferred location of the brewery. For example, if the ratings coming from the users in Luxembourg indicate that they prefer “Imperial Stout” as the beer style and they prefer to drink beers from breweries that are located in the Netherlands, then their beer preference is “Imperial Stout” in terms of the style and “Netherlands” in terms of the brewery location.
 
@@ -35,7 +35,7 @@ Let’s evaluate our results for each metric briefly:
 - one map popularity based for brewery locations
 - one map rating based for brewery locations
 
-# Map of trends (clustered)
+#### Map of trends (clustered)
 
 {% include_relative assets/plots/trends-maps.html %}
 
@@ -83,9 +83,10 @@ However, this slight change in recent years has caught our attention: we decided
 
 
 
-# Arrow plot (somewhere)
+### Arrow plot (somewhere)
 {% include_relative assets/plots/arrow-graph.html %}
 
+##### Arrow Plot results
 It seems that with time, countries “un-cluster”, and countries prefer local breweries more and more, at least for the popularity metric. For example, for the majority of the states in the U.S, the most popular brewery location is California in 2006. As the years go by, most of these states prefer to consume more and more from their local breweries. These changes could potentially be attributed to the rise of microbreweries and local establishments, revolutionizing beer consumption patterns as highlighted in these two articles. 
 
 ((https://www.researchgate.net/publication/342563412_How_and_why_did_craft_breweries_'revolutionise'_the_beer_market_The_case_of_Poland)
@@ -93,7 +94,7 @@ https://www.mdpi.com/2306-5710/9/4/86) In the face of a growing number of option
 
 As for the ratings, we can see that there is a much bigger interconnection between the countries, organized around a few poles. Therefore, reviewers seem to give more ratings to beers coming from their home countries, but not necessarily give higher ratings to those beers. 
  
-### The role of distance and wealth between countries for beer preferences
+# The role of distance and wealth between countries for beer preferences
 One would logically think that there have to be underlying factors responsible for similarities and differences in beer preferences. In this study, we decided to focus on wealth and distance. For example, a relatively wealthy country like Switzerland might be willing to get more expensive beers than a country that is much poorer. Also, in terms of distance, we would expect that it is more likely that two states of the U.S. separated by 500 kilometers might have more similarities because of the interchange of culture and goods compared to similarities between a U.S. state and a country in Africa or Asia. 
 
 
@@ -103,18 +104,58 @@ To determine how wealth and location played a role in beer preferences, we compu
 Then, using the pairwise preference similarities we computed before, for each location, we find the mean pairwise preference similarity of it with the 15 most similar locations to it and the 15 most different locations to it. Then, we aggregate these two similarity values over locations for each year. We also use the global mean preference similarity plotted before. Plotting all three curves in a single graph, we can visualize how “similar” and “different” locations behave in terms of their beer preferences with respect to each other and to the global mean similarity. As usual, we have four different metrics for each type of similarity: geographic distance and GDP per capita. Therefore, we end up with 8 different graphs and each one can be selectable using the dropdown menus. 
 
 
-## The 15 Closest and Furthest Locations
+## Similarity relative to Most alike and different locations (in terms of wealth and location)
 {% include_relative assets/plots/similarity-graphs.html %}
 
 
-## Wealth and Location results
+### Wealth and Location results
 As you can see, for each metric, the result seems to be the same: the “closest” group has always higher similarity than the “farthest”, and the global preference is almost always between the two. Furthermore, the actual curves in the graphs seem to be the same in all cases except that the closest, global, and farthest curves are vertically shifted versions of each other. This indicates that both distance and wealth can be two of the many factors that affect beer preference similarity.
 
  Interestingly, the curves are very close to each other for the wealth and distance graphs as well. One possible explanation is that the GDP per capita and the geographical distance are highly correlated since the locations in the same continent (individual states of the U.S., North European countries such as Norway and Finland, etc.) have relatively close levels of wealth and are also geographically close to each other.
 
 When we calculated the p-values by comparing the 15 closest and 15 furthest locations for each similarity metric, we observed that in almost every case, the p-value was lower than 0.05. So we can say that the brewery location preference similarity significantly differs depending on whether it is calculated among close or far locations in terms of GDP per capita and terms of geographical distance.
 
+### Location Closeness in Terms of Beer Preference 
+Wouldn't it be interesting to see which locations are the closest in terms of beer preferences? Of course, we have to keep in mind that we have four beer preference similarity metrics. To have a sensible single similarity value, we will find four beer preference similarities between each pair of locations, standardize each of the four metrics as z-scores, and then add them up into a single value. Then, the resulting overall similarities between each pair of locations for each year will be aggregated over the years such that we end up with a single beer preference similarity value for each pair of locations.
 
-# Beer brotherhood
+Now, we calculate to see the Pearson correlation coefficient between the beer preference similarity and GDP per capita difference or geographical distance. The obtained values are -0.43 for the correlation coefficient between the distance and preference similarity, and -0.23 between the wealth preference similarity. Therefore, geographical closeness between countries seems to explain the similarities better than wealth. It is also important to note that distance between countries can be a confounder when we study the difference in wealth (if we take into account the wealth distribution in the world). Another hypothesis to explain those results is that the effect of wealth on beer preferences is U-shaped, as it is the case for the relation between income and beer consumption. (https://www.researchgate.net/publication/281145522_Economic_Growth_Globalisation_and_Beer_Consumption)
+
+In any case, the correlation coefficients obtained are significantly negative. It means that the countries that are the closest in terms of distance and wealth are also more similar in terms of beer preferences. 
+It looks like beer can give us information on the connection between countries! According to this result, one last question interested us: which countries are the most similar in terms of beer preferences?
+
+
+### Beer Brotherhood and ... Enemyhood
+
+Beer is the perfect drink to exchange between friends to enjoy a relaxing night. One could even suggest that enjoying the same types of beer could be a great start to friendship! We call this amazing phenomenon “Beer brotherhood”!
+
+However, we can observe this phenomenon not just between individuals, but between countries as well. It would be intriguing to see which locations are the closest in terms of beer preferences. For a single-value comparison, we use the aggregated z-score preference similarities mentioned above between each pair of locations. 
+
+Once we get these similarity metrics, we aggregate the similarity values over the years for each pair. Here, we regard the U.S. as a single country, rather than dividing it into individual states for a fair comparison. And Tadaa! We have the ultimate beer brothers! In the spirit of Lausanne - known as the Olympic Capital, we will now take them to the podium! 
+
+Are you ready to discover the top 3 beer brothers?
+
+Drumroll, please …
+
+
 ## Podium
 {% include podium.html %}
+
+As we can see, our metrics seem to allow us to capture cultural similarities. Indeed, the Beer Brothers are countries that have been historically linked together! England and Scotland are right next to each other and culturally similar. Finland and Norway are also both Nordic countries. 
+
+If countries can be Brothers through their beer preferences, they can also be enemies… 
+
+Let us now look at the countries that would hate each other if they ever went to Satelite together!! 
+
+## Podium ... of enemies
+It looks like Iceland has a lot of enemies to watch out for! And unsurprisingly, these countries are not very connected in terms of similar cultures so it makes sense that their beer preferences are quite different. 
+
+
+## Conclusion
+
+We are a group filled with beer enjoyers and beer-haters alike - We have our good and bad stories as you can see in our “small beer facts about us” section at the bottom of the page  :)).
+
+But ultimately, no one can deny the power of beer! And that is even more evident after going through the data and doing extensive analysis on the datasets. 
+
+It is a true sign of camaraderie when one can meet up with a friend, sip on some beer, and chat for hours. But each country, like individual people, has a distinct profile for the type of beer its people enjoy and consume. Looking at those preferences - how they change over time to become either more homogenous or distinct - leads to a lot of interesting conclusions. We see that people may potentially start liking the same types of beer more often. Furthermore, we see that both geographic location and wealth have a bearing on the similarity of preferences between two locations. And we can take those similarities to form a brotherhood and enemyhood of sorts, which results in conclusions that one would probably expect based on cultural similarities! So after lots of investigation, it appears that beer preferences are just one of the many facets that we can use to research the link between various locations. However, this dataset is definitely worth further investigation, and given more time, one can find even more fascinating links between beer preferences and the world around us. 
+
+
