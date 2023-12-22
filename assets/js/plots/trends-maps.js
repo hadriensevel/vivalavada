@@ -82,7 +82,7 @@ async function createMap(metric, year= 2006) {
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height])
-        .attr("style", "max-width: 100%; height: auto;")
+        .attr("style", "max-width: 100%; height: auto; border: 1px solid black;")
         .call(zoom); // Call the zoom behavior on the SVG container
 
     // Add a path for each country and color it according to this data.
