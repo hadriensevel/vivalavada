@@ -1,9 +1,10 @@
-import {categories} from '../../../data/styles_clustered.js';
+import {beerStyleCluster} from '../../../data/clusters.js';
 
 let animationStarted = false;
 let isPaused = false;
+let metric = 'ratings-style';
 
-async function barChartsAnimation() {
+async function barChartsAnimation(metric) {
     // Number of bars
     const n = 12;
 
@@ -11,7 +12,7 @@ async function barChartsAnimation() {
     const k = 15;
 
     // Duration of the animation
-    const duration = 250;
+    const duration = 200;
 
     // Charts dimensions and margins
     const barSize = 48;
@@ -22,8 +23,24 @@ async function barChartsAnimation() {
     const width = 928;
     const height = marginTop + barSize * n + marginBottom;
 
+    // Data file name
+    const fileNameData = () => {
+        switch (metric) {
+            case 'ratings-style':
+                return 'global_style_rating_points_by_year.csv';
+            case 'number-ratings-style':
+                return 'global_style_popularity_points_by_year.csv';
+            case 'ratings-brewery':
+                return 'global_brewery_rating_points_by_year.csv';
+            case 'number-ratings-brewery':
+                return 'global_brewery_popularity_points_by_year.csv';
+        }
+    }
+
+    const fileName = 'data/' + fileNameData();
+
     // Open the csv file
-    const rawData = await d3.csv('data/global_style_popularity_points_by_year.csv');
+    const rawData = await d3.csv(fileName);
 
     // Reshape the data
     function reshapeData(data) {
@@ -34,7 +51,7 @@ async function barChartsAnimation() {
             Object.keys(row).forEach(year => {
                 // Add the category
                 if (year !== 'style') {
-                    const category = Object.keys(categories).find(key => categories[key].includes(name));
+                    const category = Object.keys(beerStyleCluster).find(key => beerStyleCluster[key].includes(name));
                     reshapedData.push({
                         date: `${year}-01-01`,
                         name: name,
@@ -224,7 +241,7 @@ async function barChartsAnimation() {
         .attr('style', 'max-width: 100%; height: auto;');
 
     // Add the svg to the div
-    const container = document.getElementById('bar-race-styles');
+    const container = document.getElementById('bar-race');
     container.appendChild(svg.node());
 
     // Update functions
@@ -283,8 +300,7 @@ async function barChartsAnimation() {
     return runAnimation;
 }
 
-// Run the animation
-barChartsAnimation().then(runAnimation => {
+function runHandler(runAnimation) {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !animationStarted) {
@@ -297,7 +313,7 @@ barChartsAnimation().then(runAnimation => {
     });
 
     // Observe the element
-    const targetDiv = document.getElementById('bar-race-styles');
+    const targetDiv = document.getElementById('bar-race');
     observer.observe(targetDiv);
 
     // Add a restart button
@@ -305,7 +321,9 @@ barChartsAnimation().then(runAnimation => {
     restartButton.addEventListener('click', () => {
         animationStarted = true; // Prevent the animation from restarting if it's already started
         isPaused = false;
-        runAnimation(); // Function to start the animation
+        try {
+            runAnimation();
+        } catch {}
     });
 
     // Add a pause button
@@ -315,5 +333,24 @@ barChartsAnimation().then(runAnimation => {
         if (!isPaused) {
             window.dispatchEvent(new Event('resume'));
         }
+    });
+}
+
+// Run the animation
+document.addEventListener('DOMContentLoaded', () => {
+    barChartsAnimation(metric).then(runAnimation => runHandler(runAnimation));
+
+    // Add an event listener to the select to update the chart
+    const select = document.querySelector('#bar-race-select');
+    select.addEventListener('input', async () => {
+        metric = select.value;
+        // Remove the old chart
+        document.querySelector('#bar-race svg').remove();
+        // Render the new chart
+        barChartsAnimation(metric).then(runAnimation => {
+            animationStarted = true;
+            isPaused = false;
+            runHandler(runAnimation)
+        });
     });
 });

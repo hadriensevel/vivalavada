@@ -9,17 +9,10 @@ button: Discover the data story 🍺
 - one map rating based for brewery locations
 
 # Bar chart races
-- one race popularity based for style preferences
-- one race rating based for style preferences
-- one race popularity based for brewery location preferences
-- one race rating based for brewery location preferences
-{% include_relative assets/plots/bar-chart-race-styles.html %}
+
+{% include_relative assets/plots/bar-chart-race.html %}
 
 # Map of trends (clustered)
-- one map popularity based for style preferences
-- one map rating based for style preferences
-- one map popularity based for brewery location preferences (clustered)
-- one map rating based for brewery location preferences (clustered)
 
 {% include_relative assets/plots/trends-maps.html %}
 

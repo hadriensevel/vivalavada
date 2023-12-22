@@ -1,3 +1,5 @@
+import {stylesColorScale, locationsColorScale} from './colors.js';
+
 async function createMap(metric, year= 2006) {
 
     const fileNameData = () => {
@@ -54,10 +56,11 @@ async function createMap(metric, year= 2006) {
 
     const path = d3.geoPath().projection(projection);
 
-    // Color scale
-    const colorScale = d3.scaleOrdinal(d3.schemePaired);
+    // Styles by location
     const styleByLocation = new Map(data.map(d => [d.location, d.style]));
-    colorScale.domain(Array.from(styleByLocation.values()));
+
+    // Color scale
+    const colorScale = metric.includes('style') ? stylesColorScale : locationsColorScale;
 
     // Create a tooltip
     const tooltip = d3.select("#map-tooltip");
