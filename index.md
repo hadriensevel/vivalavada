@@ -1,5 +1,5 @@
 ---
-title: A journey through beer preferences
+title: Cheers to Change
 description : Exploring Temporal and Spatial Dynamics in Beer Preferences
 button: Discover the data story 🍺
 ---
