@@ -331,3 +331,56 @@ h1, h2, h3, h4 {
 .hidden {
     display: none;
 }
+
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    .position {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        text-align: center;
+        margin: 0 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+
+    .first {
+        background-color: gold;
+        height: 250px;
+
+        h2, h3 {
+            color: #56bef4;
+        }
+    }
+
+    .second {
+        background-color: silver;
+        height: 200px;
+
+        h2, h3 {
+            color: #1f78b4;
+        }
+    }
+
+    .third {
+        background-color: #cd7f32;
+        color: #b2df8a;
+        height: 150px;
+
+        h2, h3 {
+            color: #b2df8a;
+        }
+    }
+
+    h2, h3 {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+}
