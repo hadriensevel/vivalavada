@@ -4,20 +4,35 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
 button: Discover the data story 🍺
 ---
 
-# Bar chart race
+# Brewery location preference maps
+- one map popularity based for brewery locations
+- one map rating based for brewery locations
+
+# Bar chart races
+- one race popularity based for style preferences
+- one race rating based for style preferences
+- one race popularity based for brewery location preferences
+- one race rating based for brewery location preferences
 {% include_relative assets/plots/bar-chart-race-styles.html %}
 
-# Map of trends
+# Map of trends (clustered)
+- one map popularity based for style preferences
+- one map rating based for style preferences
+- one map popularity based for brewery location preferences (clustered)
+- one map rating based for brewery location preferences (clustered)
 {% include_relative assets/plots/map-style-popularities.html %}
 
-# Line plot global mean similarity
+# Arrow plot (somewhere)
+{% include_relative assets/plots/highest-rated-breweries-graph.html %}
+
+# Simirality graphs
+## Globals
 {% include_relative data/html_graphs/similarity_style_global.html %}
 {% include_relative data/html_graphs/similarity_brewery_global.html %}
 
-# Arrow plot
-{% include_relative assets/plots/highest-rated-breweries-graph.html %}
-
-# Graphs 3 curves with selection of metric
+## The 4 graphs
 {% include_relative assets/plots/similarity-metrics-graphs.html %}
 
-# Plot 3 graphs depending on metrics
+
+# Beer brotherhood
+## Podium
