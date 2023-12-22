@@ -56,6 +56,8 @@ Below, you can see the global trends versus time in the form of bar chart races!
 
 {% include_relative assets/plots/bar-chart-race.html %}
 
+Let’s again briefly evaluate our results for each metric:
+
 #### Ratings of beer styles:
 In general, Imperial Stout, Abt/Quadrupel, and Imperial IPA lead the race in the top 3 spots. However, it must be acknowledged that Lambic Style beers get rated higher and higher as the years go by, with four Lambic Style beers in the top 10 and Lambic Style - Gueuze in the second spot in 2017. 
 
