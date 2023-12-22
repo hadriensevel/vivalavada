@@ -325,15 +325,6 @@ function runHandler(runAnimation) {
             runAnimation();
         } catch {}
     });
-
-    // Add a pause button
-    const pauseButton = document.getElementById('bar-race-pause-button');
-    pauseButton.addEventListener('click', () => {
-        isPaused = !isPaused;
-        if (!isPaused) {
-            window.dispatchEvent(new Event('resume'));
-        }
-    });
 }
 
 // Run the animation
@@ -347,10 +338,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove the old chart
         document.querySelector('#bar-race svg').remove();
         // Render the new chart
-        barChartsAnimation(metric).then(runAnimation => {
-            animationStarted = true;
-            isPaused = false;
-            runHandler(runAnimation)
-        });
+        animationStarted = false;
+        isPaused = false;
+        barChartsAnimation(metric).then(runAnimation => runHandler(runAnimation));
+    });
+
+    // Add a pause button
+    const pauseButton = document.getElementById('bar-race-pause-button');
+    pauseButton.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (!isPaused) {
+            window.dispatchEvent(new Event('resume'));
+        }
     });
 });
