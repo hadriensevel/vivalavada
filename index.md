@@ -1,6 +1,6 @@
 ---
 title: A journey through beer preferences
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+description:Exploring Temporal and Spatial Dynamics in Beer Preferences
 button: Discover the data story 🍺
 ---
 
