@@ -108,6 +108,7 @@ async function createMap(metric, year= 2006) {
             return style ? colorScale(style) : "#ccc";
         })
         .attr("d", path)
+        .attr("stroke", "white")
 
     // Add a white mesh.
     svg.append('path')
