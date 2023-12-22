@@ -17,7 +17,7 @@ The data used for this study is collected from two different beer rating website
 
 ##### *So, what does a ‘beer preference’ even mean?*
 
-     Now the question arises: “What do we mean by a ‘beer preference’?”. We define the beer preference of a location based on two different criteria:
+Now the question arises: “What do we mean by a ‘beer preference’?”. We define the beer preference of a location based on two different criteria:
 
 The first criterion is the preferred beer style and the second is the preferred location of the brewery. For example, if the ratings coming from the users in Luxembourg indicate that they prefer “Imperial Stout” as the beer style and they prefer to drink beers from breweries that are located in the Netherlands, then their beer preference is “Imperial Stout” in terms of the style and “Netherlands” in terms of the brewery location.
 
