@@ -147,7 +147,7 @@ async function createMap(metric, year= 2006) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html(`<b>${d.properties.name || d.properties.NAME}</b><br/>${styleByLocation.get(d.properties.name || d.properties.NAME) ? styleByLocation.get(d.properties.name || d.properties.NAME) : 'N/A'}`)
+                tooltip.html(`<b>${d.properties?.name || d.properties?.NAME}</b><br/>${styleByLocation.get(d.properties?.name || d.properties?.NAME) ? styleByLocation.get(d.properties?.name || d.properties?.NAME) : 'N/A'}`)
                     .style("left", (event.pageX) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
