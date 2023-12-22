@@ -6,12 +6,12 @@ async function createMap(metric, year= 2006) {
         switch (metric) {
             case 'ratings-style':
                 return 'style_ratings_by_year_clustered.csv';
-            case 'number-ratings-style':
+            case 'popularity-style':
                 return 'style_popularities_by_year_clustered.csv';
             case 'ratings-brewery':
-                return 'bc_popularities_by_year_clustered.csv';
-            case 'number-ratings-brewery':
                 return 'bc_ratings_by_year_clustered.csv';
+            case 'popularity-brewery':
+                return 'bc_popularities_by_year_clustered.csv';
         }
     }
 
