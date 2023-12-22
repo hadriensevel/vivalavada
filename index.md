@@ -28,3 +28,4 @@ button: Discover the data story 🍺
 
 # Beer brotherhood
 ## Podium
+{% include podium.html %}
