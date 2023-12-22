@@ -1,10 +1,10 @@
 ---
-title: A journey through beer preferences
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+title: Cheers to Change!
+description: Exploring Temporal and Spatial Dynamics in Beer Preferences
 button: Discover the data story 🍺
 ---
 
-*Beer, standing as the world's most widely consumed alcoholic drink, takes the third spot in overall beverage consumption, surpassed only by water and tea. “("Volume of World Beer Production". European Beer Guide. Archived from the original on 28 October 2006. Retrieved 17 October 2006.)”. However, as a beverage enjoyed worldwide, we believe that beer isn’t just a drink - but a cultural guide. People everywhere sip on this frothy concoction, and the way they enjoy it can vary from place to place and change as the years go by. In this study, we aim to find out exactly what these different preferences are and their evolutions! More specifically, we will identify the beer preferences for each location and analyze how their evaluation and spreading behave over time. Parallel to that, we will zoom out a bit and investigate the ‘global’ beer preferences, which will give us further insights into what the evolution of beer preferences signifies on a larger scale. Furthermore, we want to see which locations exhibit ‘similar’ beer preferences, and how these similarities change over time. In the end, we will try to understand how these similarities and differences are influenced by two factors: the geographical distances and the differences in wealth.*
+*Beer, standing as the world's most widely consumed alcoholic drink, takes the third spot in overall beverage consumption, surpassed only by water and tea. This is a sentence with [1]. However, as a beverage enjoyed worldwide, we believe that beer isn’t just a drink - but a cultural guide. People everywhere sip on this frothy concoction, and the way they enjoy it can vary from place to place and change as the years go by. In this study, we aim to find out exactly what these different preferences are and their evolutions! More specifically, we will identify the beer preferences for each location and analyze how their evaluation and spreading behave over time. Parallel to that, we will zoom out a bit and investigate the ‘global’ beer preferences, which will give us further insights into what the evolution of beer preferences signifies on a larger scale. Furthermore, we want to see which locations exhibit ‘similar’ beer preferences, and how these similarities change over time. In the end, we will try to understand how these similarities and differences are influenced by two factors: the geographical distances and the differences in wealth.*
 
 ### The dataset 
 
@@ -161,5 +161,9 @@ We are a group filled with beer enjoyers and beer-haters alike - We have our goo
 But ultimately, no one can deny the power of beer! And that is even more evident after going through the data and doing extensive analysis on the datasets. 
 
 It is a true sign of camaraderie when one can meet up with a friend, sip on some beer, and chat for hours. But each country, like individual people, has a distinct profile for the type of beer its people enjoy and consume. Looking at those preferences - how they change over time to become either more homogenous or distinct - leads to a lot of interesting conclusions. We see that people may potentially start liking the same types of beer more often. Furthermore, we see that both geographic location and wealth have a bearing on the similarity of preferences between two locations. And we can take those similarities to form a brotherhood and enemyhood of sorts, which results in conclusions that one would probably expect based on cultural similarities! So after lots of investigation, it appears that beer preferences are just one of the many facets that we can use to research the link between various locations. However, this dataset is definitely worth further investigation, and given more time, one can find even more fascinating links between beer preferences and the world around us. 
+
+## References
+
+[1]: "Volume of World Beer Production". European Beer Guide. Archived from the original on 28 October 2006. Retrieved 17 October 2006.
 
 
