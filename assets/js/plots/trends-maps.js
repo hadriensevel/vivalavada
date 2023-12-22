@@ -18,7 +18,12 @@ async function createMap(metric, year= 2006) {
     const fileName = 'data/' + fileNameData();
 
     // Load the data
-    const world = await d3.json('data/countries-50m.json');
+    const world = await d3.json('data/countries-50m.json').then(data => {
+        // Add a space to Georgia to distinguish it from the US state
+        const georgia = data.objects.countries.geometries.find(d => d.properties.name === 'Georgia');
+        georgia.properties.name = 'Georgia ';
+        return data;
+    });
     const usStates = await d3.json('data/us-states.geojson');
 
     const countries = topojson.feature(world, world.objects.countries)
