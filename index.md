@@ -147,7 +147,11 @@ If countries can be Brothers through their beer preferences, they can also be en
 Let us now look at the countries that would hate each other if they ever went to Satelite together!! 
 
 ## Podium ... of enemies
-It looks like Iceland has a lot of enemies to watch out for! And unsurprisingly, these countries are not very connected in terms of similar cultures so it makes sense that their beer preferences are quite different. 
+1. Germany and Iceland
+2. Austria and Iceland
+3. Denmark at Iceland
+
+We see one common denominator! It looks like Iceland has a lot of enemies to watch out for! And unsurprisingly, these countries are not very connected in terms of similar cultures so it makes sense that their beer preferences are quite different. 
 
 
 ## Conclusion
