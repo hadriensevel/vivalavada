@@ -12,3 +12,19 @@
         <h3>Finland & Norway</h3>
     </div>
 </div>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                return;
+            }
+
+            entry.target.classList.remove('animate');
+        }, { threshold: 0.5 });
+    });
+
+    const positions = document.querySelectorAll('.position');
+    positions.forEach(position => observer.observe(position));
+</script>

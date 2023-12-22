@@ -346,16 +346,15 @@ h1, h2, h3, h4 {
         margin: 0 15px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         border-radius: 5px;
-
-        &.growing {
-            transform: scale(0.7);
-            transition: transform 0.5s ease-in-out;
-        }
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s ease-in-out;
     }
 
     .first {
         background-color: gold;
         height: 250px;
+        animation-delay: 1s !important;
 
         h2, h3 {
             color: #56bef4;
@@ -365,6 +364,7 @@ h1, h2, h3, h4 {
     .second {
         background-color: silver;
         height: 200px;
+        animation-delay: 0.5s !important;
 
         h2, h3 {
             color: #1f78b4;
@@ -388,4 +388,18 @@ h1, h2, h3, h4 {
     h2 {
         font-size: 3rem;
     }
+
+    @keyframes grow {
+        from {
+            transform: scaleY(0);
+        }
+        to {
+            transform: scaleY(1);
+        }
+    }
+
+    .animate {
+        animation: grow 0.9s ease forwards;
+    }
+
 }
