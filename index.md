@@ -56,6 +56,19 @@ Below, you can see the global trends versus time in the form of bar chart races!
 
 {% include_relative assets/plots/bar-chart-race.html %}
 
+#### Ratings of beer styles:
+In general, Imperial Stout, Abt/Quadrupel, and Imperial IPA lead the race in the top 3 spots. However, it must be acknowledged that Lambic Style beers get rated higher and higher as the years go by, with four Lambic Style beers in the top 10 and Lambic Style - Gueuze in the second spot in 2017. 
+
+#### Popularity of beer styles:
+We begin with Pilsener, Pale Lager, and Belgian Strong Ale taking up the first three spots in 2006. Pilsener lost a lot of popularity until 2012 when India Pale Ale, Imperial Stout, and American Pale Ale climbed the ranking ladder. Until 2017, India Pale Ale was the leader of the race, followed by American Pale Ale and Imperial Stout.
+
+#### Ratings of brewery locations:
+Here, we see a huge plot twist. We begin with breweries in Belgium being highest rated by far and four of the top five brewery locations are from Europe. Soon after, in 2008, breweries in the United States, California got the top spot. Furthermore, breweries in the United States, Oregon, and Norway join the race. After 2010, we see that breweries in Norway and Belgium gradually lost their prestige, and breweries in the United States took over the race completely such that in 2017 all the five top spots were occupied by the breweries in the U.S. 
+
+#### Popularity of brewery locations:
+We begin with Belgium, England, Germany, and the Netherlands occupying the top spots, which is intuitive as these are the countries known for their beers. While the situation stays about the same until 2010, we see that breweries in the United States, California gain a lot of popularity. While breweries in Germany have lost some popularity in the last two years, breweries in England come with a final attack and finish the race in 1st place.
+
+
 ### Brewing Bridges: Examining Beer Preferences Across Distances and Economies
 Now that we have the beer preferences for each location and year, it is natural to be curious about how similar these preferences are, and how these similarities evolve over time. For this, we need to define a similarity metric. Remember that we have preferences in terms of beer styles and brewery locations and one metric for each of them is needed.
 
