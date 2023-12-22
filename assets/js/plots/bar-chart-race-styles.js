@@ -1,6 +1,7 @@
 import {categories} from '../../../data/styles_clustered.js';
 
 let animationStarted = false;
+let isPaused = false;
 
 async function barChartsAnimation() {
     // Number of bars
@@ -46,6 +47,7 @@ async function barChartsAnimation() {
 
         return reshapedData;
     }
+
     const data = reshapeData(rawData);
 
     // x axis
@@ -191,7 +193,7 @@ async function barChartsAnimation() {
     }
 
     // Keyframes
-    function getKeyframes()  {
+    function getKeyframes() {
         const keyframes = [];
         let ka, a, kb, b;
         for ([[ka, a], [kb, b]] of d3.pairs(datevalues)) {
@@ -206,6 +208,7 @@ async function barChartsAnimation() {
         keyframes.push([new Date(kb), rank(name => b.get(name) || 0)]);
         return keyframes;
     }
+
     const keyframes = getKeyframes();
 
     // Nameframes
@@ -247,8 +250,19 @@ async function barChartsAnimation() {
     showFirstFrame();
 
     // Run the animation
-    async function runAnimation()  {
+    async function runAnimation() {
         for (const keyframe of keyframes) {
+            if (isPaused) {
+                await new Promise(resolve => {
+                    const resume = () => {
+                        isPaused = false;
+                        window.removeEventListener('resume', resume);
+                        resolve();
+                    };
+                    window.addEventListener('resume', resume);
+                });
+            }
+
             const transition = svg.transition()
                 .duration(duration)
                 .ease(d3.easeLinear);
@@ -291,5 +305,14 @@ barChartsAnimation().then(runAnimation => {
     restartButton.addEventListener('click', () => {
         animationStarted = true; // Prevent the animation from restarting if it's already started
         runAnimation(); // Function to start the animation
+    });
+
+    // Add a pause button
+    const pauseButton = document.getElementById('bar-race-pause-button');
+    pauseButton.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (!isPaused) {
+            window.dispatchEvent(new Event('resume'));
+        }
     });
 });
