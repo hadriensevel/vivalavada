@@ -45,16 +45,13 @@ async function createMap(metric, year= 2006) {
 
     // Specify the chart’s dimensions.
     const width = 928;
-    const marginTop = 46;
+    const marginTop = 50;
     const height = width / 2 + marginTop;
 
     // Fit the projection.
-    //const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
-    //const path = d3.geoPath(projection);
-    const projection = d3.geoEqualEarth()
-        .fitSize([width, height], usStates); // Fit the US states within the SVG dimensions
+    const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
+    const path = d3.geoPath(projection);
 
-    const path = d3.geoPath().projection(projection);
 
     // Styles by location
     const styleByLocation = new Map(data.map(d => [d.location, d.style]));
@@ -64,16 +61,6 @@ async function createMap(metric, year= 2006) {
 
     // Create a tooltip
     const tooltip = d3.select("#map-tooltip");
-
-    // Function to update tooltip content and position
-    function updateTooltip(event, d) {
-        const [x, y] = d3.pointer(event);
-        const style = styleByLocation.get(d.properties.name) || 'Not considered';
-        tooltip
-            .style("left", x + "px")
-            .style("top", y + "px")
-            .html(`<strong>${d.properties.name}</strong>: ${style}`);
-    }
 
     // Create the zoom behavior
     const zoom = d3.zoom()
@@ -104,19 +91,6 @@ async function createMap(metric, year= 2006) {
             return style ? colorScale(style) : "#ccc";
         })
         .attr("d", path)
-        .on("mouseover", (event, d) => {
-            tooltip.style("opacity", 1);
-            updateTooltip(event, d);
-        })
-        .on("mousemove", updateTooltip)
-        .on("mouseout", () => tooltip.style("opacity", 0));
-
-    // Add a white mesh.
-    svg.append('path')
-        .datum(countrymesh)
-        .attr('fill', 'none')
-        .attr('stroke', 'white')
-        .attr('d', path);
 
     // Add the US states
     svg.append("g")
@@ -129,13 +103,13 @@ async function createMap(metric, year= 2006) {
             return style ? colorScale(style) : "#ccc";
         })
         .attr("d", path)
-        .attr("stroke", "white")
-        .on("mouseover", (event, d) => {
-            tooltip.style("opacity", 1);
-            updateTooltip(event, d);
-        })
-        .on("mousemove", updateTooltip)
-        .on("mouseout", () => tooltip.style("opacity", 0));
+
+    // Add a white mesh.
+    svg.append('path')
+        .datum(countrymesh)
+        .attr('fill', 'none')
+        .attr('stroke', 'white')
+        .attr('d', path);
 
     const legend = svg.append("g")
         .attr("id", "legend")
@@ -160,6 +134,31 @@ async function createMap(metric, year= 2006) {
             .attr("dy", "0.35em") // to vertically center text
             .text(style); // Assuming 'style' is the label for the legend
     });
+
+    // Add tooltips to the countries and US states paths
+    function addTooltip(pathSelection) {
+        pathSelection
+            .on("mouseover", (event, d) => {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html(`<b>${d.properties.name || d.properties.NAME}</b><br/>${styleByLocation.get(d.properties.name || d.properties.NAME) ? styleByLocation.get(d.properties.name || d.properties.NAME) : 'N/A'}`)
+                    .style("left", (event.pageX) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mousemove", (event) => {
+                tooltip.style("left", (event.pageX) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", () => {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+    }
+
+// Apply the tooltip function to the countries and US states paths
+    addTooltip(svg.selectAll("path"));
 
     return svg.node();
 }
