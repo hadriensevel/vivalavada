@@ -4,7 +4,7 @@ description: Exploring Temporal and Spatial Dynamics in Beer Preferences
 button: Discover the data story 🍺
 ---
 
-*Beer, standing as the world's most widely consumed alcoholic drink, takes the third spot in overall beverage consumption, surpassed only by water and tea. [1][1]. However, as a beverage enjoyed worldwide, we believe that beer isn’t just a drink - but a cultural guide. People everywhere sip on this frothy concoction, and the way they enjoy it can vary from place to place and change as the years go by. In this study, we aim to find out exactly what these different preferences are and their evolutions! More specifically, we will identify the beer preferences for each location and analyze how their evaluation and spreading behave over time. Parallel to that, we will zoom out a bit and investigate the ‘global’ beer preferences, which will give us further insights into what the evolution of beer preferences signifies on a larger scale. Furthermore, we want to see which locations exhibit ‘similar’ beer preferences, and how these similarities change over time. In the end, we will try to understand how these similarities and differences are influenced by two factors: the geographical distances and the differences in wealth.*
+*Beer, standing as the world's most widely consumed alcoholic drink, takes the third spot in overall beverage consumption, surpassed only by water and tea [^1]. However, as a beverage enjoyed worldwide, we believe that beer isn’t just a drink - but a cultural guide. People everywhere sip on this frothy concoction, and the way they enjoy it can vary from place to place and change as the years go by. In this study, we aim to find out exactly what these different preferences are and their evolutions! More specifically, we will identify the beer preferences for each location and analyze how their evaluation and spreading behave over time. Parallel to that, we will zoom out a bit and investigate the ‘global’ beer preferences, which will give us further insights into what the evolution of beer preferences signifies on a larger scale. Furthermore, we want to see which locations exhibit ‘similar’ beer preferences, and how these similarities change over time. In the end, we will try to understand how these similarities and differences are influenced by two factors: the geographical distances and the differences in wealth.*
 
 ### The dataset 
 
@@ -164,6 +164,6 @@ It is a true sign of camaraderie when one can meet up with a friend, sip on some
 
 ## References
 
-[1]: "Volume of World Beer Production". European Beer Guide. Archived from the original on 28 October 2006. Retrieved 17 October 2006.
+[^1]: "Volume of World Beer Production". European Beer Guide. Archived from the original on 28 October 2006. Retrieved 17 October 2006.
 
 
