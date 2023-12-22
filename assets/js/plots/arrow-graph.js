@@ -39,8 +39,16 @@ function drag(simulation) {
         .on('end', dragended);
 }
 
-async function createChart(year = 2006) {
-    const data = await d3.csv('data/bc_popularities_by_year.csv').then(data => {
+async function createChart(metric, year) {
+
+    let fileName;
+    if (metric === 'ratings-brewery') {
+        fileName = 'data/bc_ratings_by_year.csv';
+    } else  {
+        fileName = 'data/bc_popularities_by_year.csv';
+    }
+
+    const data = await d3.csv(fileName).then(data => {
         const transformedData = {};
         const years = Object.keys(data[0]).slice(0, 12);
         years.forEach(year => {
@@ -171,21 +179,35 @@ async function createChart(year = 2006) {
     return svg.node();
 }
 
+let metric = 'ratings-brewery';
+let year = 2006;
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Render the chart
-    const svg = await createChart();
+    const svg = await createChart(metric, year);
     document.querySelector('#arrow-graph').appendChild(svg);
 
     // Add an event listener to the slider to update the chart
     const slider = document.getElementById('arrow-graph-year-slider');
     slider.addEventListener('input', async () => {
-        const year = slider.value;
-        const svg = await createChart(year);
+        year = slider.value;
+        const svg = await createChart(metric, year);
         // Remove the old chart
         document.querySelector('#arrow-graph svg').remove();
         // Render the new chart
         document.querySelector('#arrow-graph').appendChild(svg);
         // Update the year label
         document.querySelector('#arrow-graph-year').innerHTML = year;
+    });
+
+    // Add an event listener to select input to update the chart
+    const select = document.getElementById('arrow-graph-select');
+    select.addEventListener('change', async () => {
+        metric = select.value;
+        const svg = await createChart(metric, year);
+        // Remove the old chart
+        document.querySelector('#arrow-graph svg').remove();
+        // Render the new chart
+        document.querySelector('#arrow-graph').appendChild(svg);
     });
 });
