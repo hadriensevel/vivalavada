@@ -78,7 +78,7 @@ async function barChartsAnimation(metric) {
 
     // Color scale
     const colorScale = () => {
-        const scale = d3.scaleOrdinal(d3.schemePaired);
+        const scale = d3.scaleOrdinal(d3.schemePaired.concat(d3.schemeTableau10));
         if (data.some(d => d.category !== undefined)) {
             const categoryByName = new Map(data.map(d => [d.name, d.category]))
             scale.domain(categoryByName.values());
@@ -321,9 +321,7 @@ function runHandler(runAnimation) {
     restartButton.addEventListener('click', () => {
         animationStarted = true; // Prevent the animation from restarting if it's already started
         isPaused = false;
-        try {
-            runAnimation();
-        } catch {}
+        runAnimation();
     });
 }
 
