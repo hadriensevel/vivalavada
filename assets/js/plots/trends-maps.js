@@ -1,10 +1,28 @@
-async function createMap(year= 2006) {
+async function createMap(metric, year= 2006) {
+
+    const fileNameData = () => {
+        switch (metric) {
+            case 'ratings-style':
+                return 'style_ratings_by_year_clustered.csv';
+            case 'number-ratings-style':
+                return 'style_popularities_by_year_clustered.csv';
+            case 'ratings-brewery':
+                return 'bc_popularities_by_year_clustered.csv';
+            case 'number-ratings-brewery':
+                return 'bc_ratings_by_year_clustered.csv';
+        }
+    }
+
+    const fileName = 'data/' + fileNameData();
+
     // Load the data
     const world = await d3.json('data/countries-50m.json');
+    const usStates = await d3.json('data/us-states.geojson');
+
     const countries = topojson.feature(world, world.objects.countries)
     const countrymesh = topojson.mesh(world, world.objects.countries, (a, b) => a !== b)
 
-    const stylesRatingsPerYear = await d3.csv('data/style_ratings_by_year_clustered.csv').then(data => {
+    const stylesRatingsPerYear = await d3.csv(fileName).then(data => {
         const transformedData = {};
         const years = Object.keys(data[0]).slice(0, 12);
 
@@ -12,7 +30,7 @@ async function createMap(year= 2006) {
             transformedData[year] = [];
             data.forEach(row => {
                 transformedData[year].push({
-                    location: row.location,
+                    location: row.location.replace('United States, ', ''),
                     style: row[year]
                 });
             });
@@ -29,8 +47,12 @@ async function createMap(year= 2006) {
     const height = width / 2 + marginTop;
 
     // Fit the projection.
-    const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
-    const path = d3.geoPath(projection);
+    //const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
+    //const path = d3.geoPath(projection);
+    const projection = d3.geoEqualEarth()
+        .fitSize([width, height], usStates); // Fit the US states within the SVG dimensions
+
+    const path = d3.geoPath().projection(projection);
 
     // Color scale
     const colorScale = d3.scaleOrdinal(d3.schemePaired);
@@ -60,7 +82,6 @@ async function createMap(year= 2006) {
                 .attr('transform', event.transform);
         });
 
-
     // Create the SVG container.
     const svg = d3.create("svg")
         .attr("width", width)
@@ -69,23 +90,17 @@ async function createMap(year= 2006) {
         .attr("style", "max-width: 100%; height: auto;")
         .call(zoom); // Call the zoom behavior on the SVG container
 
-    // Add a path for each country and color it according te this data.
+    // Add a path for each country and color it according to this data.
     svg.append("g")
         .selectAll("path")
         .data(countries.features)
         .enter()
         .append("path")
-        .join("path")
         .attr("fill", d => {
             const style = styleByLocation.get(d.properties.name);
-            return style ? colorScale(style) : "#ccc"; // Default color if no style is found
+            return style ? colorScale(style) : "#ccc";
         })
         .attr("d", path)
-        .append("title")
-        .text(d => {
-            const style = styleByLocation.get(d.properties.name);
-            return `${d.properties.name}: ${style || 'Not considered'}`;
-        })
         .on("mouseover", (event, d) => {
             tooltip.style("opacity", 1);
             updateTooltip(event, d);
@@ -94,11 +109,30 @@ async function createMap(year= 2006) {
         .on("mouseout", () => tooltip.style("opacity", 0));
 
     // Add a white mesh.
-    svg.append("path")
+    svg.append('path')
         .datum(countrymesh)
-        .attr("fill", "none")
-        .attr("stroke", "white")
+        .attr('fill', 'none')
+        .attr('stroke', 'white')
+        .attr('d', path);
+
+    // Add the US states
+    svg.append("g")
+        .selectAll("path")
+        .data(usStates.features)
+        .enter()
+        .append("path")
+        .attr("fill", d => {
+            const style = styleByLocation.get(d.properties.NAME);
+            return style ? colorScale(style) : "#ccc";
+        })
         .attr("d", path)
+        .attr("stroke", "white")
+        .on("mouseover", (event, d) => {
+            tooltip.style("opacity", 1);
+            updateTooltip(event, d);
+        })
+        .on("mousemove", updateTooltip)
+        .on("mouseout", () => tooltip.style("opacity", 0));
 
     const legend = svg.append("g")
         .attr("id", "legend")
@@ -128,21 +162,35 @@ async function createMap(year= 2006) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    let metric = 'ratings-style';
+    let year = 2006;
+
     // Create the map
-    const map = await createMap();
+    const map = await createMap(metric, year);
 
     // Add the map to the DOM
-    document.querySelector('#map-test').appendChild(map);
+    document.querySelector('#trends-map').appendChild(map);
+
+    // Add an event listener to the select to update the chart
+    const select = document.getElementById('trends-map-select');
+    select.addEventListener('input', async () => {
+        metric = select.value;
+        const map = await createMap(metric, year);
+        // Remove the old chart
+        document.querySelector('#trends-map svg').remove();
+        // Render the new chart
+        document.querySelector('#trends-map').appendChild(map);
+    });
 
     // Add an event listener to the slider to update the chart
     const slider = document.getElementById('map-year-slider');
     slider.addEventListener('input', async () => {
-        const year = slider.value;
-        const map = await createMap(year);
+        year = slider.value;
+        const map = await createMap(metric, year);
         // Remove the old chart
-        document.querySelector('#map-test svg').remove();
+        document.querySelector('#trends-map svg').remove();
         // Render the new chart
-        document.querySelector('#map-test').appendChild(map);
+        document.querySelector('#trends-map').appendChild(map);
         // Update the year label
         document.querySelector('#map-year').innerHTML = year;
     });

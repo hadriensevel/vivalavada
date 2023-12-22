@@ -20,7 +20,8 @@ button: Discover the data story 🍺
 - one map rating based for style preferences
 - one map popularity based for brewery location preferences (clustered)
 - one map rating based for brewery location preferences (clustered)
-{% include_relative assets/plots/map-style-popularities.html %}
+
+{% include_relative assets/plots/trends-maps.html %}
 
 # Arrow plot (somewhere)
 {% include_relative assets/plots/highest-rated-breweries-graph.html %}
